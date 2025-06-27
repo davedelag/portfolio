@@ -33,6 +33,11 @@ function initializeApp() {
     initializeHeroEffects();
     createDynamicStars();
     initializeSpaceMouseEffects();
+    
+    // Inicializar efectos avanzados después de un pequeño delay
+    setTimeout(() => {
+        initializeAdvancedEffects();
+    }, 500);
 }
 
 // ===============================
@@ -882,4 +887,359 @@ window.nextImage = nextImage;
 window.prevImage = prevImage;
 window.openFullImage = openFullImage;
 window.backToGrid = backToGrid; 
+
+// ===============================
+// TILT 3D + MICRO-INTERACCIONES 🎯
+// ===============================
+
+function initializeTilt3D() {
+    const tiltElements = document.querySelectorAll('.result-card, .case-card');
+    
+    tiltElements.forEach(element => {
+        // Agregar borde interactivo
+        const border = document.createElement('div');
+        border.className = 'interactive-border';
+        element.appendChild(border);
+        
+        // Efecto Tilt para desktop
+        if (!isMobile()) {
+            element.addEventListener('mousemove', (e) => {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                element.style.transform = `
+                    perspective(1000px) 
+                    rotateX(${rotateX}deg) 
+                    rotateY(${rotateY}deg) 
+                    translateZ(20px)
+                `;
+                
+                // Crear micro-partículas ocasionalmente
+                if (Math.random() > 0.95) {
+                    createMicroParticle(x, y, element);
+                }
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+            });
+        }
+        
+        // Efecto ripple al hacer click (móvil y desktop)
+        element.addEventListener('click', (e) => {
+            createRippleEffect(e, element);
+            createInteractionParticles(e, element);
+        });
+        
+        // Efecto táctil para móvil
+        if (isMobile()) {
+            element.addEventListener('touchstart', (e) => {
+                element.style.transform = 'perspective(1000px) scale(0.98) rotateX(2deg)';
+            });
+            
+            element.addEventListener('touchend', () => {
+                element.style.transform = 'perspective(1000px) scale(1) rotateX(0deg)';
+            });
+        }
+    });
+}
+
+function createMicroParticle(x, y, container) {
+    const particle = document.createElement('div');
+    particle.className = 'micro-particle';
+    particle.style.left = x + 'px';
+    particle.style.top = y + 'px';
+    container.appendChild(particle);
+    
+    setTimeout(() => {
+        if (particle.parentNode) {
+            particle.parentNode.removeChild(particle);
+        }
+    }, 3000);
+}
+
+function createRippleEffect(e, element) {
+    const rect = element.getBoundingClientRect();
+    const ripple = document.createElement('div');
+    ripple.className = 'ripple-effect';
+    
+    const size = Math.max(rect.width, rect.height);
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+    
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    
+    element.appendChild(ripple);
+    
+    setTimeout(() => {
+        if (ripple.parentNode) {
+            ripple.parentNode.removeChild(ripple);
+        }
+    }, 600);
+}
+
+function createInteractionParticles(e, element) {
+    const rect = element.getBoundingClientRect();
+    const centerX = e.clientX - rect.left;
+    const centerY = e.clientY - rect.top;
+    
+    for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+            const particle = document.createElement('div');
+            particle.className = 'interaction-particle';
+            
+            const angle = (i * 60) * Math.PI / 180;
+            const distance = 20 + Math.random() * 30;
+            const x = centerX + Math.cos(angle) * distance;
+            const y = centerY + Math.sin(angle) * distance;
+            
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            element.appendChild(particle);
+            
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 1000);
+        }, i * 50);
+    }
+}
+
+// ===============================
+// NÚMEROS MATRIX SUTILES 🔢
+// ===============================
+
+function initializeMatrixRain() {
+    // Solo en desktop para no sobrecargar móvil
+    if (isMobile()) return;
+    
+    const matrixContainer = document.createElement('div');
+    matrixContainer.className = 'matrix-rain';
+    document.body.appendChild(matrixContainer);
+    
+    // Crear columnas de números
+    const numberOfColumns = Math.floor(window.innerWidth / 20);
+    
+    for (let i = 0; i < numberOfColumns; i++) {
+        if (Math.random() > 0.7) { // Solo 30% de las columnas tendrán números
+            createMatrixColumn(matrixContainer, i * 20);
+        }
+    }
+}
+
+function createMatrixColumn(container, leftPosition) {
+    const column = document.createElement('div');
+    column.className = 'matrix-column';
+    column.style.left = leftPosition + 'px';
+    
+    // Generar números y caracteres
+    const characters = '01';
+    const symbols = '{}[]()<>/\\|';
+    const numbers = '0123456789ABCDEF';
+    
+    let content = '';
+    const lineCount = Math.floor(Math.random() * 15) + 10;
+    
+    for (let i = 0; i < lineCount; i++) {
+        let line = '';
+        const lineLength = Math.floor(Math.random() * 3) + 1;
+        
+        for (let j = 0; j < lineLength; j++) {
+            const rand = Math.random();
+            if (rand > 0.7) {
+                line += numbers[Math.floor(Math.random() * numbers.length)];
+            } else if (rand > 0.4) {
+                line += characters[Math.floor(Math.random() * characters.length)];
+            } else {
+                line += symbols[Math.floor(Math.random() * symbols.length)];
+            }
+        }
+        content += line + '\n';
+    }
+    
+    column.textContent = content;
+    container.appendChild(column);
+    
+    // Reiniciar la animación aleatoriamente
+    setTimeout(() => {
+        if (column.parentNode) {
+            column.parentNode.removeChild(column);
+            // Crear nueva columna después de un delay aleatorio
+            setTimeout(() => {
+                createMatrixColumn(container, leftPosition);
+            }, Math.random() * 10000 + 5000);
+        }
+    }, (Math.random() * 15000) + 10000);
+}
+
+// ===============================
+// SKILLS 3D ENHANCEMENT
+// ===============================
+
+function enhanceSkills3D() {
+    const skillItems = document.querySelectorAll('.skill-item');
+    
+    skillItems.forEach((item, index) => {
+        // Delay de aparición escalonado
+        item.style.animationDelay = (index * 0.1) + 's';
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        
+        // Observador para animación de entrada
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'cardEntrance 0.6s ease-out forwards';
+                }
+            });
+        });
+        
+        observer.observe(item);
+        
+        // Efectos de hover para skills
+        if (!isMobile()) {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'perspective(500px) rotateY(10deg) scale(1.05)';
+                
+                // Crear partículas en las esquinas
+                createSkillParticles(item);
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'perspective(500px) rotateY(0deg) scale(1)';
+            });
+        }
+    });
+}
+
+function createSkillParticles(element) {
+    const rect = element.getBoundingClientRect();
+    const positions = [
+        { x: 5, y: 5 },
+        { x: rect.width - 5, y: 5 },
+        { x: 5, y: rect.height - 5 },
+        { x: rect.width - 5, y: rect.height - 5 }
+    ];
+    
+    positions.forEach((pos, index) => {
+        setTimeout(() => {
+            const particle = document.createElement('div');
+            particle.className = 'micro-particle';
+            particle.style.left = pos.x + 'px';
+            particle.style.top = pos.y + 'px';
+            element.appendChild(particle);
+            
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 3000);
+        }, index * 100);
+    });
+}
+
+// ===============================
+// UTILIDADES Y DETECCIÓN
+// ===============================
+
+function isMobile() {
+    return window.innerWidth <= 768 || 'ontouchstart' in window;
+}
+
+// ===============================
+// THEME TOGGLE ENHANCEMENT
+// ===============================
+
+function enhanceThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', (e) => {
+            // Efecto de explosión suave
+            createThemeExplosion(e);
+        });
+    }
+}
+
+function createThemeExplosion(e) {
+    const rect = e.target.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    for (let i = 0; i < 12; i++) {
+        setTimeout(() => {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: fixed;
+                width: 6px;
+                height: 6px;
+                background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 10000;
+                left: ${centerX}px;
+                top: ${centerY}px;
+                animation: themeParticleExplode 1s ease-out forwards;
+            `;
+            
+            const angle = (i * 30) * Math.PI / 180;
+            const distance = 40;
+            particle.style.setProperty('--angle', angle + 'rad');
+            particle.style.setProperty('--distance', distance + 'px');
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 1000);
+        }, i * 30);
+    }
+}
+
+// CSS para la animación de partículas del theme
+const themeParticleStyle = document.createElement('style');
+themeParticleStyle.textContent = `
+    @keyframes themeParticleExplode {
+        0% {
+            transform: scale(0) translate(0, 0);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1) translate(
+                calc(cos(var(--angle)) * var(--distance)), 
+                calc(sin(var(--angle)) * var(--distance))
+            );
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(themeParticleStyle);
+
+// ===============================
+// INICIALIZACIÓN DE EFECTOS 3D
+// ===============================
+
+function initializeAdvancedEffects() {
+    initializeTilt3D();
+    initializeMatrixRain();
+    enhanceSkills3D();
+    enhanceThemeToggle();
+    
+    console.log('🎯 Tilt 3D + Matrix effects initialized!');
+}
+
+
+
+
 
