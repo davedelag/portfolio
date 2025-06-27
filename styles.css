@@ -685,12 +685,15 @@ section {
    HERO SECTION
 ================================= */
 .hero {
-    min-height: 100vh;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    overflow: visible;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 2rem;
+    padding: 100px 2rem;
 }
 
 .hero-container {
@@ -1154,21 +1157,46 @@ section {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000;
+    z-index: 99999;
     opacity: 0;
     visibility: hidden;
     transition: all var(--transition-fast);
+    overflow: hidden;
 }
 
 .gallery-overlay.active {
     opacity: 1;
     visibility: visible;
+}
+
+/* Bloquear scroll cuando galería está activa */
+body.gallery-open {
+    overflow: hidden !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Asegurar que el overlay cubra ABSOLUTAMENTE TODO */
+.gallery-overlay.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: #000000 !important;
+    z-index: 999999 !important;
 }
 
 .gallery-container {
@@ -1180,16 +1208,22 @@ section {
 }
 
 .gallery-close {
-    position: absolute;
-    top: -40px;
-    right: 0;
-    background: none;
-    border: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid white;
     color: white;
     font-size: 2rem;
     cursor: pointer;
-    z-index: 10001;
-    transition: color var(--transition-fast);
+    z-index: 100000;
+    transition: all var(--transition-fast);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gallery-close:hover {
@@ -1239,13 +1273,16 @@ section {
 }
 
 .gallery-fullscreen {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    border-radius: var(--border-radius);
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    border-radius: 0;
+    z-index: 999999;
 }
 
 .gallery-fullscreen-content {
@@ -1258,11 +1295,11 @@ section {
 }
 
 .gallery-back {
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 20px;
-    background: rgba(0, 0, 0, 0.7);
-    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid white;
     color: white;
     width: 50px;
     height: 50px;
@@ -1273,7 +1310,7 @@ section {
     justify-content: center;
     font-size: 1.2rem;
     transition: all var(--transition-fast);
-    z-index: 10002;
+    z-index: 1000000;
 }
 
 .gallery-back:hover {
@@ -1282,8 +1319,10 @@ section {
 }
 
 .gallery-images {
-    width: 80%;
-    height: 80%;
+    width: 95%;
+    height: 95%;
+    max-width: 1200px;
+    max-height: 900px;
     position: relative;
     display: flex;
     align-items: center;
@@ -1299,6 +1338,8 @@ section {
     object-fit: contain;
     opacity: 0;
     transition: opacity var(--transition-fast);
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .gallery-image.active {
@@ -1317,8 +1358,8 @@ section {
 
 .gallery-prev,
 .gallery-next {
-    background: rgba(0, 0, 0, 0.7);
-    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid white;
     color: white;
     width: 50px;
     height: 50px;
@@ -1330,6 +1371,7 @@ section {
     font-size: 1.2rem;
     transition: all var(--transition-fast);
     pointer-events: all;
+    z-index: 1000000;
 }
 
 .gallery-prev:hover,
@@ -1347,13 +1389,18 @@ section {
 }
 
 .gallery-counter {
-    position: absolute;
-    bottom: -40px;
+    position: fixed;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: var(--font-weight-medium);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 2px solid white;
+    z-index: 1000000;
 }
 
 /* =================================
@@ -1768,10 +1815,27 @@ section {
         transform: rotate(-45deg) translate(7px, -6px);
     }
 
-    /* Hero section móvil mejorado */
+    /* Hero section móvil mejorado - SIN SCROLL INTERNO */
     .hero {
-        min-height: 100vh;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
         padding: 80px 20px 60px;
+        display: block !important;
+    }
+    
+    .hero-container {
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
+        display: block !important;
+    }
+    
+    .hero-text {
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
     }
 
     .hero-container {
@@ -2109,6 +2173,27 @@ a:focus {
         max-height: 80px !important;
     }
     
+    /* Imágenes fullscreen más grandes en móviles */
+    .gallery-images {
+        width: 98% !important;
+        height: 95% !important;
+        max-width: 95vw !important;
+        max-height: 85vh !important;
+    }
+    
+    /* Overlay completamente negro en móviles */
+    .gallery-overlay {
+        background: #000000 !important;
+        z-index: 999999 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+    }
+    
     /* Mantener tamaño del logo */
     .nav-logo .logo-image {
         height: 40px !important;
@@ -2127,6 +2212,20 @@ a:focus {
     
     /* ELIMINAR SCROLL INTERNO EN TODAS LAS SECCIONES */
     section {
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+    
+    /* ESPECÍFICAMENTE EL HERO */
+    .hero {
+        overflow: visible !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+    }
+    
+    .hero-container {
         overflow: visible !important;
         height: auto !important;
         max-height: none !important;

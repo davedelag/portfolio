@@ -755,14 +755,19 @@ function openGallery(category) {
         grid.appendChild(div);
     });
     
+    // Guardar posición del scroll antes de abrir
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    
     // Mostrar overlay
     overlay.classList.add('active');
+    document.body.classList.add('gallery-open');
     document.body.style.overflow = 'hidden';
 }
 
 // Variables globales para la navegación
 let currentGalleryImages = [];
 let currentImageIndex = 0;
+let scrollPosition = 0;
 
 // Función para abrir imagen completa
 function openFullImage(imageSrc, current, total) {
@@ -799,7 +804,12 @@ function closeGallery() {
         fullscreen.style.display = 'none';
     }
     
+    document.body.classList.remove('gallery-open');
     document.body.style.overflow = '';
+    
+    // Restaurar posición del scroll
+    window.scrollTo(0, scrollPosition);
+    
     console.log('Gallery closed');
 }
 
