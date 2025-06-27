@@ -506,7 +506,7 @@ function initializeHeroEffects() {
         textObserver.observe(line);
     });
     
-    // Efecto de blur en la imagen basado en scroll
+    // Efecto de blur en la imagen basado en scroll (optimizado)
     function updateImageBlur() {
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
@@ -514,13 +514,17 @@ function initializeHeroEffects() {
         
         if (heroImage) {
             const blurAmount = Math.min(scrollPercent * 10, 10);
+            // Usar transform y will-change para mejor performance
+            heroImage.style.transform = `translateZ(0)`; // Force hardware acceleration
             heroImage.style.filter = `blur(${blurAmount}px)`;
+            heroImage.style.willChange = 'filter';
         }
     }
     
-    // Aplicar el efecto de blur inicial y en scroll
+    // Aplicar el efecto de blur inicial y en scroll (con throttle para mejor performance)
+    const throttledImageBlur = throttle(updateImageBlur, 16); // ~60fps
     updateImageBlur();
-    window.addEventListener('scroll', updateImageBlur);
+    window.addEventListener('scroll', throttledImageBlur, { passive: true });
 }
 
 // ===============================

@@ -182,13 +182,12 @@ html {
 
 @keyframes starPulse {
     0%, 100% { 
-        opacity: 0.3; 
+        opacity: 0.6; 
         transform: scale(1); 
     }
     50% { 
         opacity: 1; 
-        transform: scale(1.5); 
-        box-shadow: var(--shadow-glow);
+        transform: scale(1.1); 
     }
 }
 
@@ -205,7 +204,7 @@ html {
 }
 
 /* =================================
-   FONDO ESPACIAL ÉPICO 3D
+   FONDO ESPACIAL OPTIMIZADO
 ================================= */
 .stars-background {
     position: fixed;
@@ -215,11 +214,9 @@ html {
     height: 100%;
     z-index: -1;
     pointer-events: none;
-    perspective: 1000px;
-    transform-style: preserve-3d;
 }
 
-/* Nebulosas de fondo con gradientes grises sobrios */
+/* Nebulosas de fondo simplificadas - OPTIMIZADO */
 .stars-background::before {
     content: '';
     position: absolute;
@@ -228,34 +225,28 @@ html {
     width: 200%;
     height: 200%;
     background: 
-        radial-gradient(ellipse 800px 400px at 20% 10%, rgba(255, 255, 255, 0.08), transparent 50%),
-        radial-gradient(ellipse 600px 300px at 80% 30%, rgba(200, 200, 200, 0.06), transparent 50%),
-        radial-gradient(ellipse 1000px 500px at 40% 80%, rgba(150, 150, 150, 0.04), transparent 50%),
-        radial-gradient(ellipse 700px 350px at 70% 60%, rgba(255, 255, 255, 0.07), transparent 50%),
-        radial-gradient(ellipse 500px 800px at 10% 70%, rgba(180, 180, 180, 0.05), transparent 50%);
-    animation: nebulaDrift 40s ease-in-out infinite;
-    transform: translateZ(-500px);
+        radial-gradient(ellipse 800px 400px at 20% 10%, rgba(255, 255, 255, 0.04), transparent 50%),
+        radial-gradient(ellipse 600px 300px at 80% 30%, rgba(200, 200, 200, 0.03), transparent 50%),
+        radial-gradient(ellipse 1000px 500px at 40% 80%, rgba(150, 150, 150, 0.02), transparent 50%);
+    animation: nebulaDrift 60s ease-in-out infinite;
 }
 
-/* Capa de estrellas lejanas (pequeñas) */
+/* Capa de estrellas lejanas (pequeñas) - OPTIMIZADO */
 .stars-background::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(1px 1px at 12% 25%, rgba(255, 255, 255, 0.8), transparent),
-        radial-gradient(1px 1px at 35% 45%, rgba(210, 210, 210, 0.6), transparent),
-        radial-gradient(1px 1px at 67% 15%, rgba(255, 255, 255, 0.7), transparent),
-        radial-gradient(1px 1px at 89% 35%, rgba(190, 190, 190, 0.5), transparent),
-        radial-gradient(1px 1px at 23% 75%, rgba(255, 255, 255, 0.9), transparent),
-        radial-gradient(1px 1px at 78% 85%, rgba(170, 170, 170, 0.4), transparent),
-        radial-gradient(1px 1px at 45% 95%, rgba(255, 255, 255, 0.6), transparent),
-        radial-gradient(1px 1px at 91% 65%, rgba(150, 150, 150, 0.7), transparent);
+        radial-gradient(1px 1px at 12% 25%, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 35% 45%, rgba(210, 210, 210, 0.4), transparent),
+        radial-gradient(1px 1px at 67% 15%, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 89% 35%, rgba(190, 190, 190, 0.3), transparent);
     background-repeat: repeat;
     background-size: 400px 400px;
-    animation: starFieldMove 25s linear infinite;
-    transform: translateZ(-300px);
+    animation: starFieldMove 80s linear infinite; /* Más lento para mejor performance */
+    will-change: transform;
+    transform: translateZ(0); /* Force hardware acceleration */
 }
 
 /* Crear capas adicionales de estrellas con JavaScript dinámico */
@@ -266,29 +257,27 @@ html {
     background-repeat: repeat;
 }
 
-/* Estrellas medianas con parpadeo */
+/* Estrellas medianas simplificadas - OPTIMIZADO */
 .star-layer-1 {
     background-image: 
-        radial-gradient(2px 2px at 15% 20%, rgba(255, 255, 255, 0.9), transparent),
-        radial-gradient(2px 2px at 60% 40%, rgba(230, 230, 230, 0.8), transparent),
-        radial-gradient(2px 2px at 85% 70%, rgba(200, 200, 200, 0.7), transparent),
-        radial-gradient(2px 2px at 25% 80%, rgba(180, 180, 180, 0.6), transparent),
-        radial-gradient(2px 2px at 75% 25%, rgba(255, 255, 255, 0.8), transparent);
+        radial-gradient(2px 2px at 15% 20%, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(2px 2px at 60% 40%, rgba(230, 230, 230, 0.4), transparent),
+        radial-gradient(2px 2px at 85% 70%, rgba(200, 200, 200, 0.3), transparent);
     background-size: 800px 800px;
-    animation: starFieldMove 20s linear infinite, starTwinkle 3s ease-in-out infinite;
-    transform: translateZ(-200px);
+    animation: starFieldMove 60s linear infinite; /* Más lento */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
-/* Estrellas grandes y brillantes */
+/* Estrellas grandes simplificadas - OPTIMIZADO */
 .star-layer-2 {
     background-image: 
-        radial-gradient(3px 3px at 30% 10%, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.3) 50%, transparent),
-        radial-gradient(4px 4px at 70% 30%, rgba(220, 220, 220, 1), rgba(220, 220, 220, 0.3) 50%, transparent),
-        radial-gradient(3px 3px at 20% 60%, rgba(190, 190, 190, 1), rgba(190, 190, 190, 0.3) 50%, transparent),
-        radial-gradient(5px 5px at 90% 80%, rgba(160, 160, 160, 0.9), rgba(160, 160, 160, 0.2) 50%, transparent);
+        radial-gradient(3px 3px at 30% 10%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1) 50%, transparent),
+        radial-gradient(4px 4px at 70% 30%, rgba(220, 220, 220, 0.5), rgba(220, 220, 220, 0.1) 50%, transparent);
     background-size: 1200px 1200px;
-    animation: starFieldMove 15s linear infinite, starPulse 4s ease-in-out infinite;
-    transform: translateZ(-100px);
+    animation: starFieldMove 100s linear infinite; /* Mucho más lento */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 /* Prevenir overflow horizontal en todos los elementos */
@@ -318,7 +307,7 @@ section {
     box-sizing: border-box;
 }
 
-/* Partículas flotantes 3D */
+/* Partículas flotantes simplificadas - OPTIMIZADO */
 .floating-particles {
     position: absolute;
     width: 100%;
@@ -328,11 +317,13 @@ section {
 
 .particle {
     position: absolute;
-    width: 4px;
-    height: 4px;
-    background: radial-gradient(circle, rgba(200, 200, 200, 0.8), transparent);
+    width: 3px;
+    height: 3px;
+    background: radial-gradient(circle, rgba(200, 200, 200, 0.5), transparent);
     border-radius: 50%;
-    animation: particleFloat 8s ease-in-out infinite;
+    animation: particleFloat 12s ease-in-out infinite;
+    will-change: transform, opacity;
+    transform: translateZ(0); /* Force hardware acceleration */
 }
 
 .particle:nth-child(odd) {
@@ -340,13 +331,13 @@ section {
     animation-duration: 10s;
 }
 
-/* Meteoros ocasionales */
+/* Meteoros menos frecuentes - OPTIMIZADO */
 .meteor {
     position: absolute;
-    width: 2px;
-    height: 100px;
-    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8), transparent);
-    animation: meteorShower 6s linear infinite;
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: meteorShower 10s linear infinite;
     opacity: 0;
 }
 
@@ -355,20 +346,20 @@ section {
     position: absolute;
     top: 0;
     left: -1px;
-    width: 4px;
-    height: 4px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(200, 200, 200, 0.5));
+    width: 3px;
+    height: 3px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.3));
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
 }
 
-/* Planetas distantes */
+/* Planetas distantes simplificados - OPTIMIZADO */
 .distant-planet {
     position: absolute;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(180, 180, 180, 0.3), rgba(120, 120, 120, 0.1));
-    animation: planetOrbit 60s linear infinite;
-    opacity: 0.4;
+    background: radial-gradient(circle at 30% 30%, rgba(180, 180, 180, 0.2), rgba(120, 120, 120, 0.05));
+    animation: planetOrbit 80s linear infinite;
+    opacity: 0.3;
 }
 
 .planet-1 {
@@ -388,101 +379,68 @@ section {
     animation-direction: reverse;
 }
 
-/* ANIMACIONES ESPACIALES */
+/* ANIMACIONES OPTIMIZADAS */
 @keyframes nebulaDrift {
     0%, 100% { 
-        transform: translateZ(-500px) rotate(0deg) scale(1); 
-    }
-    25% { 
-        transform: translateZ(-500px) rotate(2deg) scale(1.05); 
+        transform: rotate(0deg) scale(1); 
     }
     50% { 
-        transform: translateZ(-500px) rotate(0deg) scale(1.1); 
-    }
-    75% { 
-        transform: translateZ(-500px) rotate(-2deg) scale(1.05); 
+        transform: rotate(1deg) scale(1.02); 
     }
 }
 
 @keyframes starFieldMove {
-    from { 
-        transform: translateY(0px) translateZ(var(--z-depth, 0px)); 
-    }
-    to { 
-        transform: translateY(-400px) translateZ(var(--z-depth, 0px)); 
-    }
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(-50px) translateY(-50px); }
 }
 
 @keyframes starTwinkle {
-    0%, 100% { 
-        opacity: 0.6; 
-        transform: translateZ(-200px) scale(1); 
-    }
-    50% { 
-        opacity: 1; 
-        transform: translateZ(-200px) scale(1.2); 
-    }
-}
-
-@keyframes starPulse {
-    0%, 100% { 
-        opacity: 0.8; 
-        transform: translateZ(-100px) scale(1); 
-        filter: brightness(1); 
-    }
-    50% { 
-        opacity: 1; 
-        transform: translateZ(-100px) scale(1.1); 
-        filter: brightness(1.3); 
-    }
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
 }
 
 @keyframes particleFloat {
-    0% { 
-        transform: translate3d(0, 100vh, 0) rotateX(0deg) rotateY(0deg); 
-        opacity: 0; 
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0.3;
     }
-    10% { 
-        opacity: 1; 
+    25% {
+        transform: translateY(-20px) translateX(10px) rotate(90deg);
+        opacity: 0.6;
     }
-    90% { 
-        opacity: 1; 
+    50% {
+        transform: translateY(-40px) translateX(-5px) rotate(180deg);
+        opacity: 0.8;
     }
-    100% { 
-        transform: translate3d(100px, -100px, 50px) rotateX(360deg) rotateY(180deg); 
-        opacity: 0; 
+    75% {
+        transform: translateY(-20px) translateX(-15px) rotate(270deg);
+        opacity: 0.6;
     }
 }
 
 @keyframes meteorShower {
-    0% { 
-        transform: translate3d(100vw, -100px, 0) rotate(45deg); 
-        opacity: 0; 
+    0% {
+        transform: translateX(-100px) translateY(-100px);
+        opacity: 0;
     }
-    5% { 
-        opacity: 1; 
+    10% {
+        opacity: 1;
     }
-    95% { 
-        opacity: 1; 
+    90% {
+        opacity: 1;
     }
-    100% { 
-        transform: translate3d(-100px, 100vh, 0) rotate(45deg); 
-        opacity: 0; 
+    100% {
+        transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px));
+        opacity: 0;
     }
 }
 
 @keyframes planetOrbit {
-    0% { 
-        transform: rotate(0deg) translateX(50px) rotate(0deg) scale(1); 
-        opacity: 0.3; 
+    0% {
+        transform: rotate(0deg) translateX(50px) rotate(0deg);
     }
-    50% { 
-        opacity: 0.6; 
-        transform: rotate(180deg) translateX(50px) rotate(-180deg) scale(1.1); 
-    }
-    100% { 
-        transform: rotate(360deg) translateX(50px) rotate(-360deg) scale(1); 
-        opacity: 0.3; 
+    100% {
+        transform: rotate(360deg) translateX(50px) rotate(-360deg);
     }
 }
 
@@ -526,7 +484,11 @@ section {
 /* Efectos adicionales para el hero */
 .hero {
     position: relative;
-    transform-style: preserve-3d;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /* Mejora para hardware acceleration */
+    will-change: auto;
 }
 
 .hero::before {
@@ -684,18 +646,6 @@ section {
 /* =================================
    HERO SECTION
 ================================= */
-.hero {
-    height: auto;
-    min-height: auto;
-    max-height: none;
-    overflow: visible;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding: 100px 2rem;
-}
-
 .hero-container {
     display: flex;
     flex-direction: column;
@@ -713,10 +663,12 @@ section {
 }
 
 .hero-image img {
-    width: 469px;
-    height: 469px;
-    object-fit: contain;
-    transition: filter 0.5s ease;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    /* Performance optimizada */
+    will-change: transform;
+    transition: transform 0.3s ease;
 }
 
 .hero-text {
@@ -1067,6 +1019,13 @@ section {
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: var(--font-weight-medium);
+}
+
+/* Estilo específico para botones de galería en casos */
+.case-content .gallery-button {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
 }
 
 /* =================================
@@ -2041,6 +2000,19 @@ html {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+    
+    .particle,
+    .meteor,
+    .distant-planet,
+    .star-layer-1,
+    .star-layer-2,
+    .stars-background::after {
+        animation: none !important;
+    }
+    
+    .hero-image img {
+        filter: none !important;
     }
 }
 
