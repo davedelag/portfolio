@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David de la Garza – Creative Growth Portfolio</title>
+    <meta name="description" content="Growth Marketing & Creative Direction specialist. Especialista en marketing digital, diseño de productos y desarrollo no-code con resultados comprobados.">
+    <meta name="keywords" content="Growth Marketing, Creative Direction, Digital Marketing, No-code Development, Product Design">
+    <meta name="author" content="David de la Garza">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="magic-loader">
+            <div class="stars-container">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+            </div>
+            <div class="loader-text">Cargando Magia...</div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeToggle" aria-label="Cambiar tema">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Stars Background -->
+    <div class="stars-background">
+        <!-- Capas adicionales de estrellas -->
+        <div class="star-layer star-layer-1"></div>
+        <div class="star-layer star-layer-2"></div>
+        
+        <!-- Partículas flotantes 3D -->
+        <div class="floating-particles">
+            <div class="particle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="top: 60%; left: 30%; animation-delay: 2s;"></div>
+            <div class="particle" style="top: 40%; left: 70%; animation-delay: 4s;"></div>
+            <div class="particle" style="top: 80%; left: 50%; animation-delay: 1s;"></div>
+            <div class="particle" style="top: 10%; left: 80%; animation-delay: 3s;"></div>
+            <div class="particle" style="top: 70%; left: 20%; animation-delay: 5s;"></div>
+        </div>
+        
+        <!-- Meteoros ocasionales -->
+        <div class="meteor" style="top: 10%; left: 80%; animation-delay: 0s;"></div>
+        <div class="meteor" style="top: 30%; left: 90%; animation-delay: 8s;"></div>
+        <div class="meteor" style="top: 50%; left: 85%; animation-delay: 15s;"></div>
+        
+        <!-- Planetas distantes -->
+        <div class="distant-planet planet-1"></div>
+        <div class="distant-planet planet-2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="merk.png" alt="David de la Garza" class="logo-image">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#cases">Cases</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-image">
+                <img id="hero-balloon" src="balloon.png" alt="Balloon" loading="lazy">
+            </div>
+                         <div class="hero-text">
+                 <div class="text-line" data-delay="0">This is a balloon.</div>
+                 <div class="text-line" data-delay="1">It might seem simple.</div>
+                 <div class="text-line" data-delay="2">Just air trapped in rubber.</div>
+                 <div class="text-line" data-delay="3">But in the right hands,</div>
+                 <div class="text-line" data-delay="4">it can become anything:</div>
+                 <div class="text-line" data-delay="5">A dog, a flower, a heart...</div>
+                 <div class="text-line" data-delay="6">The same happens with ideas.</div>
+                 <div class="text-line" data-delay="7">In the right hands, a simple idea</div>
+                 <div class="text-line" data-delay="8">can transform into something extraordinary.</div>
+                 <div class="text-line final-line" data-delay="9">I do that with ideas.</div>
+             </div>
+        </div>
+    </section>
+
+    <!-- Results Dashboard Section -->
+    <section id="results" class="results-section">
+        <div class="container">
+            <h2 class="section-title">Key Results</h2>
+            <div class="results-grid">
+                <!-- Social Media Growth -->
+                <div class="result-card" data-modal="social-modal">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Social Media Growth</h3>
+                    <div class="metric">
+                        <span class="number">230,000</span>
+                        <span class="label">Followers Accumulated</span>
+                    </div>
+                    <div class="secondary-metrics">
+                        <span>Multi-million organic reach</span>
+                        <span>TikTok & Instagram: 230K+ followers</span>
+                        <span>Viral content on every managed account</span>
+                    </div>
+                </div>
+
+                <!-- Product Design -->
+                <div class="result-card" data-modal="product-modal">
+                    <div class="card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Product Design</h3>
+                    <div class="metric">
+                        <span class="number"><i class="fas fa-lightbulb"></i></span>
+                        <span class="label">Creative Product Development</span>
+                    </div>
+                    <div class="secondary-metrics">
+                        <span>Physical & digital product development</span>
+                        <span>Branding, storytelling & integral creative design</span>
+                        <span>Organic market validation</span>
+                    </div>
+                </div>
+
+                <!-- Web/App Design -->
+                <div class="result-card" data-modal="webapp-modal">
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Web & App Design</h3>
+                    <div class="metric">
+                        <span class="number"><i class="fas fa-code"></i></span>
+                        <span class="label">No-Code Development</span>
+                    </div>
+                    <div class="secondary-metrics">
+                        <span>App development with no-code tools</span>
+                        <span>UI/UX applied in gamified experiences</span>
+                        <span>Graphic design implementation in functional websites</span>
+                    </div>
+                </div>
+
+                <!-- Digital Ads -->
+                <div class="result-card" data-modal="ads-modal">
+                    <div class="card-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Digital Advertising</h3>
+                    <div class="metric">
+                        <span class="number">$100K+</span>
+                        <span class="label">Ad Investment</span>
+                    </div>
+                    <div class="secondary-metrics">
+                        <span>6-figures in advertising investment</span>
+                        <span>Positive ROAS (up to 20+ in optimized campaigns)</span>
+                        <span>Creative development & AI generative iterations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="cases" class="cases-section">
+        <div class="container">
+            <h2 class="section-title">Real Cases</h2>
+            <div class="cases-grid">
+                <!-- Case Study 1 -->
+                <div class="case-card">
+                    <div class="case-image">
+                        <img src="p1.png" alt="Project 1" loading="lazy">
+                    </div>
+                    <div class="case-content">
+                        <h3>Viral Growth on Social Media</h3>
+                        <p><strong>Objective:</strong> Achieve virality and community without advertising investment</p>
+                        <p><strong>My Role:</strong> Strategy, content and creative direction</p>
+                        <p><strong>Process:</strong> CapCut, Midjourney, trend analysis, AI content</p>
+                        <p><strong>Results:</strong> Astrovivo: 230K+ accumulated followers, millions of views • Personal spiritual brand: 100K+ followers in months • Supplements brand: created 15 videos, half achieved multi-million reach without existing followers • Lacuifa: founded e-commerce startup that I later sold for organic growth + ads</p>
+                        <div class="case-tags">
+                            <span>TikTok</span>
+                            <span>Instagram</span>
+                            <span>Content Strategy</span>
+                            <span>AI Tools</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="case-card">
+                    <div class="case-image">
+                        <img src="p2.png" alt="Project 2" loading="lazy">
+                    </div>
+                    <div class="case-content">
+                        <h3>No-Code App for E-commerce</h3>
+                        <p><strong>Objective:</strong> Gamify a physical product sold by Astrovivo, enabling its digitalization and adaptation for global sales</p>
+                        <p><strong>My Role:</strong> Product Designer and No-Code Developer</p>
+                        <p><strong>Process:</strong> FlutterFlow + Make + Shopify</p>
+                        <p><strong>Result:</strong> Interactive digital product, immersive experience without logistical friction</p>
+                        <div class="case-tags">
+                            <span>No-Code</span>
+                            <span>FlutterFlow</span>
+                            <span>Gamification</span>
+                            <span>Product Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="case-card">
+                    <div class="case-image">
+                        <img src="p3.png" alt="Project 3" loading="lazy">
+                    </div>
+                    <div class="case-content">
+                        <h3>Ads Performance & Creatives</h3>
+                        <p><strong>Objective:</strong> Optimize advertising ROI and scale digital products</p>
+                        <p><strong>My Role:</strong> Ads Manager and Creative Strategist</p>
+                        <p><strong>Process:</strong> Meta Business Manager, testing, AI creative optimization</p>
+                        <p><strong>Result:</strong> ROAS above 20x in successful campaigns • 6-figure accumulated investment • Disruptive creativity and continuous testing</p>
+                        <div class="case-tags">
+                            <span>Meta Ads</span>
+                            <span>ROAS 20x+</span>
+                            <span>Creative AI</span>
+                            <span>Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Skills & Tools</h2>
+            <div class="skills-categories">
+                <!-- No-Code Tools -->
+                <div class="skill-category">
+                    <h3>No-Code Tools</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-tooltip="Advanced process automation">
+                            <div class="skill-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <span>Make</span>
+                        </div>
+                        <div class="skill-item" data-tooltip="Workflows and automation">
+                            <div class="skill-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <span>n8n</span>
+                        </div>
+                        <div class="skill-item" data-tooltip="AI-assisted development">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <span>Cursor</span>
+                        </div>
+                        <div class="skill-item" data-tooltip="Mobile app development">
+                            <div class="skill-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <span>FlutterFlow</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI & Creative Media -->
+                <div class="skill-category">
+                    <h3>AI & Creative Media</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-tooltip="AI image generation">
+                            <div class="skill-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <span>Midjourney</span>
+                        </div>
+                        <div class="skill-item" data-tooltip="AI voice synthesis">
+                            <div class="skill-icon">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                            <span>ElevenLabs</span>
+                        </div>
+                        <div class="skill-item" data-tooltip="Mobile video editing">
+                            <div class="skill-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <span>CapCut</span>
+                        </div>
+                        <div class="skill-item" data-tooltip="Professional design suite">
+                            <div class="skill-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <span>Adobe Creative</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ads & Analytics -->
+                <div class="skill-category">
+                    <h3>Ads & Analytics</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-tooltip="Meta campaign management">
+                            <div class="skill-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <span>Meta Business</span>
+                        </div>
+                        <div class="skill-item" data-tooltip="E-commerce and online sales">
+                            <div class="skill-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <span>Shopify</span>
+                        </div>
+                        <div class="skill-item" data-tooltip="Web analytics and conversions">
+                            <div class="skill-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <span>Google Analytics</span>
+                        </div>
+                        <div class="skill-item" data-tooltip="Google advertising">
+                            <div class="skill-icon">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <span>Google Ads</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">About Me</h2>
+                    <p>
+                        Financial Administration graduate with specialization in Creative Marketing. 
+                        My passion for innovation led me to master no-code tools and artificial 
+                        intelligence technologies to create creative solutions that generate measurable results.
+                    </p>
+                    <p>
+                        I combine financial analysis with digital creativity to develop growth marketing 
+                        strategies that transcend traditional methods. My approach focuses on constant 
+                        experimentation and data-driven optimization.
+                    </p>
+
+                </div>
+                <div class="about-image">
+                    <div class="image-container">
+                        <img src="profile.png" alt="David de la Garza" loading="lazy">
+                        <div class="image-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Ready to create something incredible together?</h3>
+                    <p>
+                        If you're looking for a growth marketing specialist who combines creativity, 
+                        technology and measurable results, let's talk.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>dave.delam@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+52 6671423855</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Mexico (open to relocate)</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="submit-button">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; David De la Garza Macias 2025</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/david-de-la-garza-macías-9837a911a" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/soydavedela/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@astrovivo_" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/@AstroVivo" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay">
+        <!-- Social Media Modal -->
+                    <div id="social-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close">&times;</span>
+                    <h3>Social Media Growth</h3>
+
+                    <p>Comprehensive multi-brand organic growth strategy, achieving consistent virality and solid communities without initial advertising investment.</p>
+                    <div class="modal-metrics">
+                        <div class="metric-item">
+                            <span class="metric-number">230K+</span>
+                            <span class="metric-label">Accumulated Followers</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-number">Multi-Million</span>
+                            <span class="metric-label">Organic Reach</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-number">100%</span>
+                            <span class="metric-label">Viral Content</span>
+                        </div>
+                    </div>
+                    <button class="gallery-button" onclick="openGallery('social')">
+                        <i class="fas fa-images"></i>
+                        Gallery
+                    </button>
+                </div>
+            </div>
+
+        <!-- Product Design Modal -->
+        <div id="product-modal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <h3>Product Design</h3>
+
+                <p>Design and launch of physical products using design thinking methodology and market validation.</p>
+                <div class="modal-metrics">
+                    <div class="metric-item">
+                        <span class="metric-number">TCG Cards</span>
+                        <span class="metric-label">Pokémon/Yu-Gi-Oh-like booster packs for blessing your foods</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number">Spiritual Deck</span>
+                        <span class="metric-label">Gamified micro-spiritual actions to improve wellbeing</span>
+                    </div>
+                </div>
+                <button class="gallery-button" onclick="openGallery('product')">
+                    <i class="fas fa-images"></i>
+                    Gallery
+                </button>
+            </div>
+        </div>
+
+        <!-- Web/App Design Modal -->
+        <div id="webapp-modal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <h3>Web & App Design</h3>
+
+                <p>Web and mobile application development using no-code tools, focused on UX/UI and conversion.</p>
+                <div class="modal-metrics">
+                    <div class="metric-item">
+                        <span class="metric-number">AI-Powered + Creative Design</span>
+                        <span class="metric-label">Innovative approach combining artificial intelligence with creative design</span>
+                    </div>
+                </div>
+                <button class="gallery-button" onclick="openGallery('webapp')">
+                    <i class="fas fa-images"></i>
+                    Gallery
+                </button>
+            </div>
+        </div>
+
+        <!-- Digital Ads Modal -->
+                    <div id="ads-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close">&times;</span>
+                    <h3>Digital Advertising</h3>
+
+                    <p>Strategic management of 6-figure advertising investment with focus on disruptive creativity and continuous optimization using generative AI.</p>
+                    <div class="modal-metrics">
+                        <div class="metric-item">
+                            <span class="metric-number">20x+</span>
+                            <span class="metric-label">Maximum ROAS</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-number">$100K+</span>
+                            <span class="metric-label">Total Investment</span>
+                        </div>
+                    </div>
+                    <button class="gallery-button" onclick="openGallery('ads')">
+                        <i class="fas fa-images"></i>
+                        Gallery
+                    </button>
+                </div>
+            </div>
+    </div>
+
+    <!-- Gallery System -->
+    <div id="gallery-overlay" class="gallery-overlay" onclick="if(event.target === this) closeGallery()">
+        <div class="gallery-container">
+            <button class="gallery-close" onclick="closeGallery()">&times;</button>
+            <div class="gallery-content">
+                <!-- Gallery Grid View -->
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- Grid thumbnails will be loaded dynamically -->
+                </div>
+                <!-- Full Image View -->
+                <div class="gallery-fullscreen" id="gallery-fullscreen" style="display: none;">
+                    <div class="gallery-fullscreen-content">
+                        <button class="gallery-back" onclick="backToGrid()">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <div class="gallery-images" id="gallery-images">
+                            <!-- Full images will be loaded dynamically -->
+                        </div>
+                        <div class="gallery-nav">
+                            <button class="gallery-prev" onclick="prevImage()">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="gallery-next" onclick="nextImage()">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="gallery-counter">
+                            <span id="gallery-current">1</span> / <span id="gallery-total">1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html> 
