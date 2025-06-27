@@ -58,6 +58,13 @@
     box-sizing: border-box;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
 html {
     scroll-behavior: smooth;
     font-size: 16px;
@@ -72,6 +79,7 @@ body {
     transition: background-color var(--transition-smooth), color var(--transition-smooth);
     width: 100%;
     max-width: 100vw;
+    touch-action: pan-y;
 }
 
 html {
@@ -207,7 +215,6 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
     z-index: -1;
     pointer-events: none;
     perspective: 1000px;
@@ -297,14 +304,12 @@ html {
 .floating-particles,
 .floating-particles * {
     max-width: 100vw;
-    overflow: hidden;
 }
 
 /* Asegurar que las secciones no se salgan */
 section {
     width: 100%;
     max-width: 100vw;
-    overflow-x: hidden;
 }
 
 .container {
@@ -687,7 +692,6 @@ section {
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden;
     padding: 2rem;
 }
 
@@ -802,7 +806,6 @@ section {
     opacity: 0;
     animation: slideInUp 1s ease 1.1s forwards;
     position: relative;
-    overflow: hidden;
     box-shadow: 0 4px 15px rgba(192, 192, 192, 0.2);
 }
 
@@ -913,7 +916,6 @@ section {
     transition: all var(--transition-fast);
     backdrop-filter: var(--blur-backdrop);
     position: relative;
-    overflow: hidden;
 }
 
 .result-card::before {
@@ -1012,7 +1014,6 @@ section {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--border-radius);
-    overflow: hidden;
     transition: all var(--transition-fast);
     backdrop-filter: var(--blur-backdrop);
 }
@@ -1021,7 +1022,6 @@ section {
 
 .case-image {
     position: relative;
-    overflow: hidden;
     height: 200px;
 }
 
@@ -1219,7 +1219,6 @@ section {
 
 .gallery-grid-item {
     aspect-ratio: 1;
-    overflow: hidden;
     border-radius: 8px;
     cursor: pointer;
     transition: all var(--transition-fast);
@@ -1803,32 +1802,9 @@ section {
     }
 
     /* Grillas responsivas mejoradas */
-    .results-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 0 10px;
-    }
-
     .result-card {
         padding: 1.5rem;
         min-height: auto;
-    }
-
-    .cases-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 0 10px;
-    }
-
-    .skills-categories {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 0 10px;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
     }
 
     .skill-item {
@@ -1840,7 +1816,6 @@ section {
         grid-template-columns: 1fr;
         gap: 2rem;
         text-align: center;
-        padding: 0 10px;
     }
 
     .image-container img {
@@ -1852,7 +1827,6 @@ section {
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 0 10px;
     }
 
     .contact-form {
@@ -1864,7 +1838,6 @@ section {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
-        padding: 0 20px;
     }
 
     /* Modales móvil */
@@ -2026,5 +1999,118 @@ a:focus {
     body {
         background: white;
         color: black;
+    }
+}
+
+/* =================================
+   MOBILE SCROLL FIX CRÍTICO
+================================= */
+@media (max-width: 768px) {
+    /* ARREGLO DEFINITIVO: Cambiar grids a columna única en móviles */
+    .results-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .cases-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .skills-categories {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* Asegurar scroll fluido en móviles */
+    * {
+        -webkit-overflow-scrolling: touch !important;
+        overflow-x: visible !important;
+        max-width: 100vw !important;
+        box-sizing: border-box !important;
+    }
+    
+    body {
+        overflow-x: hidden !important;
+        touch-action: pan-y !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+    
+    section {
+        overflow: visible !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        touch-action: auto !important;
+    }
+    
+    .container {
+        overflow: visible !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        touch-action: auto !important;
+        padding: 0 15px !important;
+    }
+    
+    /* Eliminar cualquier scroll horizontal en tarjetas */
+    .result-card,
+    .case-card,
+    .skill-item {
+        overflow: visible !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        touch-action: auto !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Asegurar que las imágenes no se salgan */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Arreglar específicamente las imágenes de los cases */
+    .case-image img {
+        width: 100% !important;
+        max-width: 100% !important;
+        object-fit: cover !important;
+    }
+    
+    /* Arreglar específicamente la sección de Key Results */
+    .results-section {
+        overflow: visible !important;
+        touch-action: auto !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+    
+    /* Arreglar sección de Real Cases */
+    .cases-section {
+        overflow: visible !important;
+        touch-action: auto !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+    
+    /* Arreglar sección de Skills */
+    .skills-section {
+        overflow: visible !important;
+        touch-action: auto !important;
+        width: 100% !important;
+        max-width: 100vw !important;
     }
 } 
